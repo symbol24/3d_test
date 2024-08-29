@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgi0pfuy0jete"]
+
+[ext_resource type="Script" path="res://speed_label.gd" id="1_jcfsx"]
+
+[node name="Ui" type="CanvasLayer"]
+
+[node name="speed" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="speed_label" type="RichTextLabel" parent="speed"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 991.0
+offset_top = 568.0
+offset_right = 1205.0
+offset_bottom = 650.0
+theme_override_colors/default_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "0.0"
+script = ExtResource("1_jcfsx")
