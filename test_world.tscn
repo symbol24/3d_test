@@ -21,7 +21,6 @@ shape = SubResource("BoxShape3D_jmwp4")
 mesh = SubResource("BoxMesh_30uuf")
 
 [node name="car" parent="." instance=ExtResource("1_i3b5n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35433, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996071, 0.088564, 0, -0.088564, 0.996071, 0, 35.6328, 55.7738)
