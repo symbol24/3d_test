@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://nsqh1ol1msnt"]
+
+[ext_resource type="Script" path="res://character_body_car.gd" id="1_3d1es"]
+[ext_resource type="ArrayMesh" uid="uid://eiigllhlwb3l" path="res://Car 02/Car2.obj" id="2_5nf80"]
+[ext_resource type="PackedScene" uid="uid://yyh52my8nqnd" path="res://camera_gimble.tscn" id="3_v028y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_45ucd"]
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5sdt5"]
+height = 0.25
+radius = 0.44
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lc68w"]
+size = Vector3(2.21692, 1.32654, 6.29083)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_js6qj"]
+size = Vector3(1, 0.665527, 3.43713)
+
+[node name="CharacterBodyCar" type="CharacterBody3D"]
+script = ExtResource("1_3d1es")
+shift_rotation = 0.3
+drift_shift_rotation = 0.6
+
+[node name="ball" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_45ucd")
+
+[node name="body" type="MeshInstance3D" parent="ball"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 1.91463)
+mesh = ExtResource("2_5nf80")
+skeleton = NodePath("../..")
+
+[node name="env_colliders" type="RigidBody3D" parent="ball"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="front_left" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 1.08235, -0.561608, 0.0216295)
+shape = SubResource("CylinderShape3D_5sdt5")
+
+[node name="front_right" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.082, -0.562, 0.0216295)
+shape = SubResource("CylinderShape3D_5sdt5")
+
+[node name="back_left" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 1.08235, -0.561608, 3.73211)
+shape = SubResource("CylinderShape3D_5sdt5")
+
+[node name="back_right" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.082, -0.562, 3.73211)
+shape = SubResource("CylinderShape3D_5sdt5")
+
+[node name="bottom" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261841, -0.058858, 1.97887)
+shape = SubResource("BoxShape3D_lc68w")
+
+[node name="top" type="CollisionShape3D" parent="ball/env_colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7708, 2.40566)
+shape = SubResource("BoxShape3D_js6qj")
+
+[node name="camera_gimble" parent="." instance=ExtResource("3_v028y")]

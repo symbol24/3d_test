@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://yyh52my8nqnd"]
+
+[ext_resource type="Script" path="res://camera_gimble.gd" id="1_4cke7"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2_skp6a"]
+
+[node name="camera_gimble" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82401, 11.7937)
+script = ExtResource("1_4cke7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, -2.06143)
+current = true
+script = ExtResource("2_skp6a")

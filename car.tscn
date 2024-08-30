@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://msjctskj6x5x"]
+[gd_scene load_steps=5 format=3 uid="uid://msjctskj6x5x"]
 
 [ext_resource type="Script" path="res://car.gd" id="1_dtro2"]
-[ext_resource type="Script" path="res://camera_gimble.gd" id="2_2wdti"]
-[ext_resource type="Script" path="res://camera_3d.gd" id="3_fowrn"]
+[ext_resource type="PackedScene" uid="uid://yyh52my8nqnd" path="res://camera_gimble.tscn" id="3_gjcai"]
 [ext_resource type="ArrayMesh" uid="uid://eiigllhlwb3l" path="res://Car 02/Car2.obj" id="4_p3r22"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa7yx"]
@@ -19,15 +18,7 @@ shape = SubResource("BoxShape3D_wa7yx")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("4_p3r22")
 
-[node name="camera_gimble" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82401, 11.7937)
-script = ExtResource("2_2wdti")
-
-[node name="Camera3D" type="Camera3D" parent="camera_gimble"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, -2.06143)
-current = true
-script = ExtResource("3_fowrn")
+[node name="camera_gimble" parent="." instance=ExtResource("3_gjcai")]
 
 [node name="turn_point" type="Marker3D" parent="."]
 unique_name_in_owner = true
