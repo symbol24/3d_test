@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://1bclecwb147y"]
+
+[ext_resource type="ArrayMesh" uid="uid://bbm7spk2102q0" path="res://Car 01/Car.obj" id="2_8lwio"]
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_njqe5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmwp4"]
+size = Vector3(500, 0.1, 500)
+
+[sub_resource type="BoxMesh" id="BoxMesh_30uuf"]
+size = Vector3(500, 0.1, 500)
+
+[node name="world" type="Node3D"]
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(6.92376, 0, 0, 0, 1, 0, 0, 0, 13.1671, 0, -0.286658, -0.464459)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("BoxShape3D_jmwp4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("BoxMesh_30uuf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996071, 0.088564, 0, -0.088564, 0.996071, 0, 35.6328, 55.7738)
+light_energy = 2.0
+light_angular_distance = 10.0
+sky_mode = 1
+
+[node name="Car" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -12)
+mesh = ExtResource("2_8lwio")
+
+[node name="Car2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -15)
+mesh = ExtResource("2_8lwio")
+
+[node name="Car3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -33)
+mesh = ExtResource("2_8lwio")
+
+[node name="Car4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -66)
+mesh = ExtResource("2_8lwio")
+
+[node name="Car5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 10)
+mesh = ExtResource("2_8lwio")
+
+[node name="Car6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 11)
+mesh = ExtResource("2_8lwio")
+
+[node name="car" parent="." instance=ExtResource("2_njqe5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.86167, 0)

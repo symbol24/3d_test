@@ -6,13 +6,56 @@
 [ext_resource type="ArrayMesh" uid="uid://eiigllhlwb3l" path="res://Car 02/Car2.obj" id="4_p3r22"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa7yx"]
-size = Vector3(2.5, 2, 5.69)
+size = Vector3(2.5, 1.6, 6.2)
 
-[node name="car" type="RigidBody3D"]
+[node name="car" type="VehicleBody3D"]
+mass = 100.0
 script = ExtResource("1_dtro2")
+STEER_LIMIT = 0.4
+engine_force_value = 40
+
+[node name="back_right" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19304, 0.452572, 1.84745)
+wheel_roll_influence = 0.7
+wheel_rest_length = 0.1
+wheel_friction_slip = 3.0
+suspension_travel = 0.3
+suspension_stiffness = 20.0
+suspension_max_force = 10000.0
+
+[node name="back_left" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19402, 0.422929, 1.74771)
+wheel_roll_influence = 0.7
+wheel_rest_length = 0.1
+wheel_friction_slip = 3.0
+suspension_travel = 0.3
+suspension_stiffness = 20.0
+suspension_max_force = 10000.0
+
+[node name="front_right" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19304, 0.452572, -1.91211)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.7
+wheel_rest_length = 0.1
+wheel_friction_slip = 3.0
+suspension_travel = 0.3
+suspension_stiffness = 20.0
+suspension_max_force = 10000.0
+
+[node name="front_back" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19402, 0.422929, -1.91211)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.7
+wheel_rest_length = 0.1
+wheel_friction_slip = 3.0
+suspension_travel = 0.3
+suspension_stiffness = 20.0
+suspension_max_force = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22826, 0)
 shape = SubResource("BoxShape3D_wa7yx")
 
 [node name="Car2" type="MeshInstance3D" parent="."]
@@ -20,15 +63,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("4_p3r22")
 
 [node name="camera_gimble" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82401, 11.7937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48248, 9.366)
 script = ExtResource("2_2wdti")
 
 [node name="Camera3D" type="Camera3D" parent="camera_gimble"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, -2.06143)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0)
 current = true
 script = ExtResource("3_fowrn")
-
-[node name="turn_point" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541558, -2.27522)
